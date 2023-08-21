@@ -1,4 +1,4 @@
-# Title (replace with your title)
+# Regex Tutorial
 
 Introductory paragraph (replace this with your text)
 
@@ -21,20 +21,49 @@ Briefly summarize the regex you will be describing and what you will explain. In
 - [Look-ahead and Look-behind](#look-ahead-and-look-behind)
 
 ## Regex Components
-Anchors
-- `abc$` -^start/$end of the string
-    - ^ Matches the beginning of the string or the beginning of a line if the multiple flag (m) is enabled. This matches a position, not a character.
-    - $ Matches the end of the string or the end of a line if the multiline flag (m) is enabled. This also matches a position, not a character
 
 ### Anchors
+- `abc$` -^start/$end of the string
+    - `^` Matches the beginning of the string or the beginning of a line if the multiple flag (m) is enabled. This matches a position, not a character.
+    - `$` Matches the end of the string or the end of a line if the multiline flag (m) is enabled. This also matches a position, not a character
+
+- `\b\B` -word, non-word boundary
+    - `\b` Matches a word boundary position that is between a word character and a non-word character or position (start/end of string). See the word character class (w) for more info.
+    - `\B` Matches any position that is not a word boundary. This matches a position, not a character.
 
 ### Quantifiers
+Quantifiers indicate that the preceding token must be matched by a certain number of times. A quantifier can be greedy or lazy which is further explained below.
+- `a*a+a?` -0 or more, 1 or more, 0 or 1
+    - '+' Matches 1 or more of the preceding tokens.
+    - '*' Matches 0 or more of the preceding tokens.
+    - '?' Matches 0 or 1 of the preceding tokens, making it optional.
+    - '?' Makes the preceding quantifier lazy, causing to match as few characters as possible. By default, quantifiers are greedy, and will try to match as many characters as possible.
 
 ### OR Operator
+- `|` Acts like a boolean OR. Matches the expression before or after the '|' character. It can operate within a group, or on a whole expression. The patterns will be tested in order. Just as in Java will match either set of characters. It will look for this OR that.
 
 ### Character Classes
+Character classes match a character from a specific set. There are a number of predefined character classes and the user can also define their own sets.
+- `[ABC]` Characters inside the bracket will match any character in the set.
+- `[^ABC]` Adding a caret will match any character that is not in the set.
+- `[A-Z]` Adding a dash between two characters will set a range.
+- `.` Will match any characters, expect line breaks. It is like a wildcard and will accept any input
+- `[\s\S]` A character set that can be used to match any character, including line breaks, without the dotall flag. An alternative to this is [^] caret in brackets, but it is not supported by all browsers.
+- `\w` Matches any word character (alphanumeric & underscore). Only matches low-ascii characters (no accented or non-roman characters).
+- `\W` Matches any character that is not a word character (alphanumeric & underscore).
+- `\p` Matches any digit character (0-9).
+- `\d` Matches a character in the specified unicode category.
 
 ### Flags
+Expression flags change how the expression is interpreted. Flags follow the closing forward slash of the expression.
+- `i` Ignores case
+- `g` Global search retain the index of the last match, allowing subsequent searches to start from the end of the previous match. Without the global flag, subsequent searches will return the same match.
+- `m` Multiline flag. When the multiline flag is enabled, beginning and end anchors (^ and &) will match the start and end of a line, instead of the start and end of a whole string.
+- `u` Unicode.
+- `y` The expression will only match from is last index position and ignores the global (g) flag is set. Since each search in RegExr is discrete, this flag has no further impact on the displayed results.
+- `s` Dot(.) will match any character, including new line.
+
+NOTE: Unicode is an information technology standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems
 
 ### Grouping and Capturing
 
