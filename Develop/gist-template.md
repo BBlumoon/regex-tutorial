@@ -72,12 +72,31 @@ NOTE: Unicode is an information technology standard for the consistent encoding,
 - `\1` Is a numeric reference
 
 ### Bracket Expressions
+A bracket expression enclosed in square brackets is a regular expression that matches a single character, or collating element. If the initial character is a circumflex ^, then this bracket expression is complemented.
+
+See Character Class to see some examples.
 
 ### Greedy and Lazy Match
+- 'Greedy' means matching the longest possible string. A Greedy quantifier tells the engine to match as many instances of its quantified token or subpattern as possible. This behavior is called greedy.
+- 'Lazy' means matching the shortest possible string. A lazy quantifier tells the engine to match as few of the quantified tokens as needed. As you'll see in the table below, a regular quantifier is made lazy by appending a ? question mark to it.
+
+See [link]"https://javascript.info/regexp-greedy-and-lazy for more detailed information.
 
 ### Boundaries
+`\b` An anchor like the caret and the dollar sign. It matches at a position that is called a 'word boundary'. This match is zero-length.
+
+Characters that are matched by the short-hand character class `\w` are the characters that are treated as word characters by word boundaries.
+
+Since digits are considered to be word characters, `\b4\b` can be used to match a 4 that is not part of a larger number. So saying \b matches before and after an alphanumeric sequence is more exact than saying “before and after a word”.
+
+`\B` is the negated version of `\b`. `\B` matches at every position where `\b` does not. Effectively, `\B` matches at any position between two word characters as well as at any position between two non-word characters.
+
+There are more boundries with the Regex Engine. Some examples include Tcl, GNU, and POSIX.
 
 ### Back-references
+Backreferences match the same text as previously matched by a capturing group. Suppose you want to match a pair of opening and closing HTML tags, and the text in between. By putting the opening tag into a backreference, we can reuse the name of the tag for the closing tag.
+
+For Example: `<([A-Z][0-9]*)\b[^>]*>.*?</\1>` This regex contains only one pair of parentheses, which capture the string matched by `[A-Z][0-9]*`. This is the opening HTML tag. The backreference `\1` references the first capturing group. `\1` matches the exact same text that was matched by the first capturing group. The `/` before it is a literal character. It is simply the forward slash in the closing HTML tag that we are trying to match.
 
 ### Look-ahead and Look-behind
 
