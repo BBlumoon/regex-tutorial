@@ -66,6 +66,10 @@ Expression flags change how the expression is interpreted. Flags follow the clos
 NOTE: Unicode is an information technology standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems
 
 ### Grouping and Capturing
+- `(ABC)` Capturing groups multiple tokens together and creates a capture group for extracting a substring or using a back reference.
+- `(?<name>ABC)` Named capturing group captures groups of a specific name
+- `(?:ABC)` Groups multiple tokens together without creating a capture group
+- `\1` Is a numeric reference
 
 ### Bracket Expressions
 
