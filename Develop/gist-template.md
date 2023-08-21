@@ -99,7 +99,21 @@ Backreferences match the same text as previously matched by a capturing group. S
 For Example: `<([A-Z][0-9]*)\b[^>]*>.*?</\1>` This regex contains only one pair of parentheses, which capture the string matched by `[A-Z][0-9]*`. This is the opening HTML tag. The backreference `\1` references the first capturing group. `\1` matches the exact same text that was matched by the first capturing group. The `/` before it is a literal character. It is simply the forward slash in the closing HTML tag that we are trying to match.
 
 ### Look-ahead and Look-behind
+-`(?=ABC)` is a postive lookahead and it matches a group after the main expression without including it in the result.
+
+-`(?!ABC)` is a negitive lookahead and it specifies a group that can not match after the main expression (if it matches, the result is discarded)
+
+-`(?<=ABC>)` is a postive lookbehind and matches a group before the main expression without including it in the result.
+
+-`(?<!ABC)` is a negitive lookbehind and Specifies a group that can not match before the main expression (if it matches, the result is discarded).
+
+Lookaheads and lookbehinds forces the main expressions to be what you have defined it as. Without it being exactly what it is it will not be accepted as a valid input.
 
 ## Author
+Colin Moon: Rutgers Bootcamp student
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+* [regexr](https://regexr.com/)
+* [BackRef](https://www.regular-expressions.info/backref.html)
+* [RegExpression](https://www.regular-expressions.info/wordboundaries.html)
+
+My github https://github.com/BBlumoon 
